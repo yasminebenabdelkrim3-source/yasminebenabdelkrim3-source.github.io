@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Yasmine Ben Abdelkrim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+</head>
+<body>
+    <!-- Fond animé style Pexels -->
+    <div class="ocean-background">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        
+        <div class="light-reflection"></div>
+    </div>
+
+    <div id="root">
+        <p>Loading portfolio... If this persists, check the console for errors.</p>
+    </div>
+    <script type="text/babel" data-type="module">
+        console.log('React version:', React.version);
+
+        const App = () => {
+            const [activeSection, setActiveSection] = React.useState('présentation');
+
+            const sections = [
+                'Présentation',
+                'Formation Académique',
+                'Projets',
+                'Expériences',
+                'Vie Associative',
+                'Contact'
+            ];
+
+            // Header Component
+            const Header = () => (
+                <header className="site-header">
+                    <div className="container">
+                        <div className="header-inner">
+                            <div className="brand">
+                                <h1>Yasmine Ben Abdelkrim</h1>
+                                <span>Ingénieure en Énergies | Passionnée par l'innovation et les projets technologiques</span>
+                            </div>
+                            <nav className="nav">
+                                {sections.map((section) => (
+                                    <button
+                                        key={section}
+                                        onClick={() => setActiveSection(section.toLowerCase().replace(' ', '-'))}
+                                        className={activeSection === section.toLowerCase().replace(' ', '-') ? 'active' : ''}
+                                    >
+                                        {section}
+                                    </button>
+                                ))}
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+            );
+
+            // Presentation Section
+            const Presentation = () => (
+                <section className="hero">
+                    <div className="container">
+                        <div className="hero-grid">
+                            <div className="hero-text">
+                                <h2>Présentation</h2>
+                                <p className="lead">
+                                    Je suis Yasmine Ben Abdelkrim, étudiante en master à l'École Polytechnique, spécialisée en énergies. Mes études m'ont permis d'acquérir des connaissances solides en énergies renouvelables, stockage d'énergie et efficacité énergétique, tout en développant des compétences en programmation et robotique. Passionnée par l'innovation technologique, je suis motivée par les défis environnementaux actuels et ambitionne de contribuer à des solutions durables pour un avenir plus vert. Mon objectif est de m'engager dans des projets de recherche appliquée et de leadership en ingénierie, afin de promouvoir l'efficacité énergétique et l'intégration de technologies intelligentes dans le secteur de l'énergie.
+                                </p>
+                            </div>
+                            <div className="hero-photo">
+                                <img src="assets/ma_photo.jpg" alt="Yasmine Ben Abdelkrim" onError={() => console.error('Failed to load profile image')} />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+
+            // Formation Academique Section
+            const FormationAcademique = () => (
+                <section className="section">
+                    <div className="container">
+                        <h3>Formation Académique</h3>
+                        <div className="timeline">
+                            <div className="item">
+                                <div className="date">2025 - 2026</div>
+                                <div>École Polytechnique de Paris, Paris, France - Master M2 : Sciences and Technology for Renewable Energy</div>
+                            </div>
+                            <div className="item">
+                                <div className="date">2023 - 2025</div>
+                                <div>École nationale d'ingénieurs de Tunis (ENIT), Tunis, Tunisie - Cycle d'ingénieur en génie électrique</div>
+                            </div>
+                            <div className="item">
+                                <div className="date">2021 - 2023</div>
+                                <div>Institut préparatoire aux études scientifiques et techniques (IPEST), Tunis, Tunisie - Cycle préparatoire - Section Mathématiques-Physique (MP)</div>
+                            </div>
+                            <div className="item">
+                                <div className="date">2021</div>
+                                <div>Lycée pilote de l'Ariana, Ariana, Tunisie - Baccalauréat section Mathématiques - Mention Très Bien (moyenne : 18.78)</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+
+            // Projets Section
+            const Projets = () => {
+                const projects = [
+                    {
+                        title: "Robot autonome suiveur de cible pour terrains variés",
+                        description: "Programmation de systèmes autonomes avec gestion de capteurs et algorithmes de suivi de cible."
+                    },
+                    {
+                        title: "Carte électronique pour contrôle de vitesse d'un moteur CC",
+                        description: "Conception de circuits électroniques pour la régulation de moteurs."
+                    },
+                    {
+                        title: "Gestion de parking en temps réel avec Arduino",
+                        description: "Programmation de systèmes embarqués pour l'optimisation en temps réel."
+                    },
+                    {
+                        title: "Prédiction de temps d'arrivée avec ESP32 et machine learning",
+                        description: "Intégration de systèmes embarqués (ESP32 + GPS) avec des modèles de machine learning pour la prédiction de données."
+                    },
+                    {
+                        title: "Carrelage piézoélectrique générateur d'électricité",
+                        description: "Conception et fabrication d'un système piézoélectrique pour convertir l'énergie mécanique (marche) en électricité, avec intégration de matériaux et tests de performance. Prix de meilleure idée impactante lors de la compétition de Injaz."
+                    },
+                    {
+                        title: "Système de purification et désalinisation d'eau pour l'agriculture en zones rurales",
+                        description: "Conception de solutions innovantes pour lutter contre le stress hydrique en Tunisie. Intégration de technologies de désalinisation par osmose inverse et de filtration biologique. Optimisation de l'utilisation des énergies renouvelables (panneaux solaires) pour alimenter les systèmes."
+                    },
+                    {
+                        title: "Neorganic : Biodigesteurs pour une agriculture durable et autonome en énergie",
+                        description: "Optimisation des processus de fermentation anaérobie pour produire de l'énergie renouvelable (biogaz) et des engrais de haute qualité. Réduction de la dépendance aux engrais chimiques et aux combustibles fossiles."
+                    },
+                    {
+                        title: "Participation à la compétition internationale Enactus avec le projet Souaqi Farms",
+                        description: "Objectif du projet : transformer les déchets agricoles en ressources durables via des biodigesteurs. Prix du projet le plus impactant sur l'ODD 6 (Eau propre et assainissement). Deuxième prix du projet le plus impactant sur l'ODD 2 (Faim Zéro). Financement de 5 000 € pour le développement du projet."
+                    },
+                    {
+                        title: "Étude et conception d'une installation de panneaux photovoltaïques pour mon domestique",
+                        description: "Calcul des besoins énergétiques d'un foyer et dimensionnement de l'installation PV. Sélection des composants (panneaux, onduleurs) en fonction des spécifications techniques."
+                    },
+                    {
+                        title: "Développement et mise en œuvre d'un radio web connecté au Wi-Fi à base de la carte Raspberry Pi 4",
+                        description: "Programmation en Python pour gérer les fonctionnalités de la radio. Configuration et gestion d'un serveur web sur Raspberry Pi."
+                    }
+                ];
+
+                return (
+                    <section className="section">
+                        <div className="container">
+                            <h3>Projets</h3>
+                            <div className="projects-grid">
+                                {projects.map((project, index) => (
+                                    <div key={index} className="project-card">
+                                        <h4>{project.title}</h4>
+                                        <p>{project.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                );
+            };
+
+            // Experiences Section
+            const Experiences = () => (
+                <section className="section alt">
+                    <div className="container">
+                        <h3>Expériences</h3>
+                        <div className="timeline">
+                            <div className="item">
+                                <div className="date">Été 2025</div>
+                                <div>ACTIA, Tunis, Tunisie - Stage ingénieur - Conception de systèmes intelligents<br />
+                                    - Conception de systèmes intelligents: Développement de solutions interactives pour le monitoring d'énergie<br />
+                                    - Technologies embarquées: Implémentation de systèmes embarqués pour la collecte et l'analyse de données énergétiques<br />
+                                    - Intelligence Artificielle: Intégration d'algorithmes d'IA pour l'optimisation et la prédiction de la consommation énergétique</div>
+                            </div>
+                            <div className="item">
+                                <div className="date">Été 2024</div>
+                                <div>Société Tunisienne d'Électricité et de Gaz (STEG), Tunis, Tunisie - Stage ouvrier<br />
+                                    - Énergie photovoltaïque: Conception et planification de projets photovoltaïques, de l'étude de faisabilité à la mise en œuvre<br />
+                                    - Transport et distribution d'électricité: Développement de compétences en coordination inter-services (exploitation, travaux, études)<br />
+                                    - Normes et réglementations: Vérification des normes locales et des réglementations environnementales pour les projets énergétiques</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+
+            // Vie Associative Section
+            const VieAssociative = () => {
+                const associations = [
+                    {
+                        title: "Team Leader - Enactus ENIT",
+                        description: "Direction d'équipe dans une organisation estudiantine dédiée à l'entrepreneuriat social et innovant.",
+                        image: "assets/enactus-enit.jpg"
+                    },
+                    {
+                        title: "Membre actif - Club Robotique ENIT",
+                        description: "Participation active aux projets et compétitions de robotique.",
+                        image: "assets/club-robotique-enit.jpg"
+                    },
+                    {
+                        title: "Membre actif - Club Génie Électrique ENIT",
+                        description: "Implication dans l'organisation d'événements techniques et workshops.",
+                        image: "assets/club-genie-electrique-enit.jpg"
+                    },
+                    {
+                        title: "Responsable organisation - Journée Internationale de l'Arbre à l'ENIT",
+                        description: "Coordination et gestion logistique d'un événement éco-citoyen majeur.",
+                        image: "assets/journee-arbre-enit.jpg"
+                    },
+                    {
+                        title: "Responsable RH - Econics",
+                        description: "Gestion des ressources humaines dans une jeune entreprise dédiée à la conception de robots autonomes.",
+                        image: "assets/econics.jpg"
+                    },
+                    {
+                        title: "Membre - Power Press",
+                        description: "Contribution au développement d'une jeune entreprise dédiée à la conception de carrelage piézoélectrique.",
+                        image: "assets/power-press.jpg"
+                    }
+                ];
+
+                return (
+                    <section className="section">
+                        <div className="container">
+                            <h3>Vie Associative</h3>
+                            <div className="cards">
+                                {associations.map((assoc, index) => (
+                                    <div key={index} className="card">
+                                        <img src={assoc.image} alt={assoc.title} onError={() => console.error(`Failed to load image for ${assoc.title}`)} />
+                                        <h4>{assoc.title}</h4>
+                                        <p>{assoc.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                );
+            };
+
+            // Contact Section
+            const Contact = () => (
+                <section className="section alt">
+                    <div className="container">
+                        <h3>Contact</h3>
+                        <p>Email: <a href="mailto:yasminebenabdelkrim3@gmail.com">yasminebenabdelkrim3@gmail.com</a></p>
+                        <p>LinkedIn: <a href="https://linkedin.com/in/yasmine-ben-abdelkrim">linkedin.com/in/yasmine-ben-abdelkrim</a></p>
+                        <p>Mobile: +33 7 59 13 09 20</p>
+                        <p>Adresse: Nation, Paris</p>
+                    </div>
+                </section>
+            );
+
+            // Render the active section
+            const renderSection = () => {
+                switch (activeSection) {
+                    case 'présentation': return <Presentation />;
+                    case 'formation-académique': return <FormationAcademique />;
+                    case 'projets': return <Projets />;
+                    case 'expériences': return <Experiences />;
+                    case 'vie-associative': return <VieAssociative />;
+                    case 'contact': return <Contact />;
+                    default: return <Presentation />;
+                }
+            };
+
+            return (
+                <div>
+                    <Header />
+                    {renderSection()}
+                    <footer className="small">
+                        <div className="container">
+                            <p>&copy; 2025 Yasmine Ben Abdelkrim. Tous droits réservés.</p>
+                        </div>
+                    </footer>
+                    <button id="backToTop" onClick={() => window.scrollTo(0, 0)}>↑</button>
+                </div>
+            );
+        };
+
+        // Render the App
+        try {
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(<App />);
+        } catch (error) {
+            console.error('Failed to render React app:', error);
+            document.getElementById('root').innerHTML = '<p style="color: red; text-align: center;">Error loading portfolio. Check console for details.</p>';
+        }
+
+        // Back to top button visibility
+        document.addEventListener('DOMContentLoaded', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
